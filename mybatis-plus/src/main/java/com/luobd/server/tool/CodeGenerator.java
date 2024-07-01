@@ -19,12 +19,19 @@ import java.util.Scanner;
 // 演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中
 public class CodeGenerator {
 
-
-
-
-
-
     public static String projectDir = "\\services\\hospital";
+
+
+    public static String classPackage = "com.luobd.server.business";
+
+
+    public static String url = "jdbc:mysql://localhost:3306/syt_hosp?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC";
+
+
+    public static String username = "root";
+
+
+    public static String password = "root";
 
 
     public static void main(String[] args) {
@@ -79,22 +86,22 @@ public class CodeGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("Luoyu");
         gc.setOpen(false);
-        // gc.setSwagger2(true); 实体属性 Swagger2 注解
+        gc.setSwagger2(true);
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/syt_hosp?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
+        dsc.setUrl(url);
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("root");
+        dsc.setUsername(username);
+        dsc.setPassword(password);
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-        pc.setParent("com.luobd.server.business");
+        pc.setParent(classPackage);
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -141,6 +148,8 @@ public class CodeGenerator {
 
         // 配置模板
         TemplateConfig templateConfig = new TemplateConfig();
+        templateConfig.setService("/temp/service.java");
+        templateConfig.setServiceImpl("/temp/serviceImpl.java");
 
         // 配置自定义输出模板
         //指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
@@ -150,6 +159,7 @@ public class CodeGenerator {
 
         templateConfig.setXml(null);
         mpg.setTemplate(templateConfig);
+
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
@@ -157,6 +167,7 @@ public class CodeGenerator {
         //strategy.setSuperEntityClass("Mode");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
+
         // 公共父类
        // strategy.setSuperControllerClass("你");
         // 写于父类中的公共字段

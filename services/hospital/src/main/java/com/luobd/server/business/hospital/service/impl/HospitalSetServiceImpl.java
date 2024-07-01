@@ -19,4 +19,5 @@ import org.springframework.stereotype.Service;
 @Primary
 public class HospitalSetServiceImpl extends ServiceImpl<HospitalSetMapper, HospitalSet> implements IHospitalSetService {
 
+
 }

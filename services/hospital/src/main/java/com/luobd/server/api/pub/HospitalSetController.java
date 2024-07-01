@@ -1,6 +1,5 @@
 package com.luobd.server.api.pub;
 
-import com.alibaba.nacos.common.util.Md5Utils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.luobd.server.business.hospital.entity.HospitalSet;
@@ -38,7 +37,7 @@ public class HospitalSetController {
     @ApiOperation(value = "创建医院设置信息")
     public ResponseData<Boolean> create(@RequestBody HospitalSet hospitalSet) {
         hospitalSet.setStatus(1);
-        hospitalSet.setSignKey(Md5Utils.getMD5(hospitalSet.getSignKey().getBytes(StandardCharsets.UTF_8)));
+       // hospitalSet.setSignKey(MD5.getMD5(hospitalSet.getSignKey().getBytes(StandardCharsets.UTF_8)));
         boolean save = hospitalSetService.save(hospitalSet);
         return ResponseData.success(save);
     }

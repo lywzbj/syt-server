@@ -18,6 +18,8 @@
         <module>model</module>
         <module>services</module>
         <module>mybatis-plus</module>
+        <module>base</module>
+        <module>spring-cloud-starter</module>
     </modules>
     <artifactId>syt</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -39,21 +41,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
             <!--mybatis-plus 持久层-->
             <dependency>
@@ -109,11 +97,6 @@
                 <version>${aliyun.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.aliyun.oss</groupId>
-                <artifactId>aliyun-sdk-oss</artifactId>
-                <version>${oss.version}</version>
-            </dependency>
 
             <!--日期时间工具-->
             <dependency>
