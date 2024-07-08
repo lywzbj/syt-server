@@ -1,0 +1,19 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: gateway
+  cloud:
+    consul:
+      port: 8500
+      host: 127.0.0.1
+    gateway:
+      routes:
+        - id: baseapi
+          uri: lb://baseapi # 路由的目标地址,前面的lb表示负载均衡
+          predicates: # 路由断言，判断请求是否符合规则
+            - Path=/base/** # 路径断言，判断路径是否是以/base，如果是则符合
+
+
+
+
