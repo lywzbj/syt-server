@@ -2,6 +2,7 @@ package com.luobd.server.base.business.dict.service;
 
 import com.luobd.server.base.business.dict.entity.CoreDict;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.luobd.server.base.business.dict.input.DictCreateInput;
 import com.luobd.server.common.model.ResponseData;
 import java.util.List;
 
@@ -23,6 +24,8 @@ public interface ICoreDictService extends IService<CoreDict> {
   ResponseData<Boolean> batchDelete(List<Long> ids);
 
 
+
+  ResponseData<Long> create(DictCreateInput input);
 
 
 

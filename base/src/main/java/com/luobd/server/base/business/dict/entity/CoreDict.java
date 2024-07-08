@@ -3,6 +3,8 @@ package com.luobd.server.base.business.dict.entity;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -20,10 +22,17 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="CoreDict对象", description="")
+@ApiModel(value="CoreDict", description="")
 public class CoreDict implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+
+
+    @ApiModelProperty(value = "id")
+    @TableId
+    private Long id;
+
 
     @ApiModelProperty(value = "创建时间")
     @TableField("createTime")
@@ -55,9 +64,11 @@ public class CoreDict implements Serializable {
     private String type;
 
     @ApiModelProperty(value = "字典值")
+    @TableField("dictValue")
     private String dictValue;
 
     @ApiModelProperty(value = "字典code")
+    @TableField("dictCode")
     private Long dictCode;
 
     @ApiModelProperty(value = "备注")
