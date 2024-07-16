@@ -13,7 +13,15 @@ spring:
           uri: lb://baseapi # 路由的目标地址,前面的lb表示负载均衡
           predicates: # 路由断言，判断请求是否符合规则
             - Path=/base/** # 路径断言，判断路径是否是以/base，如果是则符合
-
+          filters:
+            - StripPrefix=1
+        - id: hospital
+          uri: lb://hospital # 路由的目标地址,前面的lb表示负载均衡
+          predicates: # 路由断言，判断请求是否符合规则
+            - Path=/hospital/** # 路径断言，判断路径是否是以/base，如果是则符合
+          filters:
+            #  过滤器  过滤转发地址前缀，过滤1节，即删除/base  ->  http://baseapi/**
+            - StripPrefix=1
 
 
 

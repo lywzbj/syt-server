@@ -18,12 +18,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
 @Api(tags = "医院设置模块")
-@RequestMapping(value = "/api/hospitalSet")
+@RequestMapping(value = "/api/hospital/set")
 public class HospitalSetController {
 
 
@@ -41,6 +40,14 @@ public class HospitalSetController {
         boolean save = hospitalSetService.save(hospitalSet);
         return ResponseData.success(save);
     }
+
+
+    @GetMapping(value = "/get")
+    @ApiOperation(value = "根据id获取医院设置")
+    public ResponseData<HospitalSet> get(@RequestParam(value = "id")Long id) {
+        return ResponseData.success(hospitalSetService.getById(id));
+    }
+
 
 
     @PostMapping(value = "/batchDelete")

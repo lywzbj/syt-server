@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/base/dict")
+@RequestMapping("/api/dict")
 @Api(tags = "字典模块")
 public class DictController {
 
